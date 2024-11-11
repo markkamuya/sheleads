@@ -113,4 +113,5 @@ def scenario_page(scenario_id):
 
 # Run the app
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Bind to 0.0.0.0 and use the dynamic port provided by Render
+    app.run(host='0.0.0.0', port=port)
