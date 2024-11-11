@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select a Scenario</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Choose a Leadership Scenario</h1>
+        <form action="/profile" method="post">
+            <label for="username">Enter Username:</label>
+            <input type="text" id="username" name="username" required>
+            <button type="submit">Enter</button>
+        </form>
+    </div>
+</body>
+</html>

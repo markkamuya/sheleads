@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scenario: {{ scenario['description'] }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #F8D7E4, #FCE4EC);
+            height: 100vh;
+            color: #4A4A4A;
+        }
+
+        header {
+            background-color: #F7B9D0;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid #FFF;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-family: 'Roboto', sans-serif;
+            color: #5A4E7D;
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #6D6D6D;
+            margin-top: 10px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        /* Scenario Box */
+        #scenario_description {
+            font-size: 1.2rem;
+            color: #5A4E7D;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        #dialogue_box {
+            background-color: #FFF;
+            border: 1px solid #E0A7C5;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        #dialogue_box p {
+            font-size: 1.2rem;
+            color: #5A4E7D;
+        }
+
+        /* Input Field */
+        #user_input {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+            border-radius: 10px;
+            border: 1px solid #E0A7C5;
+            margin-bottom: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Submit Button */
+        #submit_response {
+            background-color: #F7B9D0;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            border: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #submit_response:hover {
+            background-color: #E19A9A;
+        }
+
+        /* AI Evaluation Box */
+        #bot_response {
+            display: none;
+            background-color: #F9E0F4;
+            border: 1px solid #E0A7C5;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        #bot_response h4 {
+            font-size: 1.5rem;
+            color: #5A4E7D;
+        }
+
+        #response_text {
+            font-size: 1.2rem;
+            color: #6D6D6D;
+        }
+
+        /* Timer Section */
+        #timer {
+            font-size: 1.2rem;
+            color: #5A4E7D;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            font-size: 1rem;
+            color: #5A4E7D;
+            margin-top: 40px;
+        }
+
+        footer a {
+            color: #5A4E7D;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            #submit_response {
+                width: 100%;
+            }
+
+            #user_input {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>SheLeads: Leadership Scenarios</h1>
+    <p>Practice, Learn, Lead</p>
+</header>
+
+<div class="container">
+    <!-- Scenario Description -->
+    <div id="scenario_description">
+        <p><strong>Your current scenario:</strong> {{ scenario['description'] }}</p>
+    </div>
+
+    <!-- John's First Statement -->
+    <div id="dialogue_box">
+        <p><strong>John:</strong> <span id="current_statement">{{ scenario['first_statement'] }}</span></p>
+    </div>
+
+    <!-- User Input Field -->
+    <textarea id="user_input" placeholder="How would you respond to this situation?" rows="4" cols="50"></textarea>
+
+    <!-- Submit Button -->
+    <button id="submit_response">Submit</button>
+
+    <!-- AI Evaluation Section -->
+    <div id="bot_response">
+        <h4>AI Evaluation:</h4>
+        <p id="response_text">Your response will appear here.</p>
+    </div>
+
+    <!-- Timer Section -->
+    <div id="timer">Time remaining: <span id="time_left">180s</span></div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 SheLeads | <a href="#">Privacy Policy</a></p>
+</footer>
+
+<script src="/static/js/script.js"></script>
+
+</body>
+</html>

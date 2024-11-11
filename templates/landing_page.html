@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SheLeads: Practice, Learn, Lead</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, rgba(255, 182, 193, 0.8), rgba(255, 224, 230, 0.8));
+            height: 100vh;
+            color: #333;
+        }
+
+        header {
+            background-color: #F7B9D0;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid #FFF;
+        }
+
+        header h1 {
+            font-family: 'Roboto', sans-serif;
+            color: #5A4E7D;
+            font-size: 3.5rem;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #6D6D6D;
+            margin-top: 10px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+            padding: 30px;
+            overflow: auto;
+        }
+
+        /* Carousel styling */
+        .carousel-item {
+            text-align: center;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-item h3 {
+            font-size: 1.75rem;
+            color: #5A4E7D;
+            margin-bottom: 15px;
+        }
+
+        .carousel-item p {
+            font-size: 1rem;
+            color: #6D6D6D;
+            margin-bottom: 20px;
+        }
+
+        /* Scenario Cards Styling */
+        .card {
+            border: 0;
+            border-radius: 15px;
+            background-color: #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #5A4E7D;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            color: #6D6D6D;
+        }
+
+        .btn-primary {
+            background-color: #F7B9D0;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #E19A9A;
+        }
+
+        /* Carousel buttons */
+        .carousel-control-prev, .carousel-control-next {
+            font-size: 18px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            padding: 5px;
+        }
+
+        .carousel-control-prev-icon, .carousel-control-next-icon {
+            width: 15px;
+            height: 15px;
+            background-size: 100%;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 1rem;
+            color: #5A4E7D;
+        }
+
+        footer a {
+            color: #5A4E7D;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Ensure it's mobile responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            header h1 {
+                font-size: 2.5rem;
+            }
+            header p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>SheLeads</h1>
+    <p>Practice, Learn, Lead</p>
+</header>
+
+<!-- Carousel for extra scenario information -->
+<div id="scenarioCarousel" class="carousel slide" data-bs-ride="carousel" style="padding: 20px;">
+    <div class="carousel-inner">
+        <!-- First Carousel Item -->
+        <div class="carousel-item active">
+            <h3>Develop Your Leadership Skills</h3>
+            <p>Engage with real-world workplace scenarios and develop the skills needed to lead with confidence, empathy, and impact.</p>
+        </div>
+        <!-- Second Carousel Item -->
+        <div class="carousel-item">
+            <h3>Understand Emotional Intelligence</h3>
+            <p>Learn how to manage difficult conversations, identify emotional triggers, and lead with emotional intelligence to foster a positive work environment.</p>
+        </div>
+        <!-- Third Carousel Item -->
+        <div class="carousel-item">
+            <h3>Learn to Navigate Conflicts</h3>
+            <p>Practice conflict resolution strategies, improve communication, and build stronger relationships in your team or organization.</p>
+        </div>
+    </div>
+    <!-- Carousel controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#scenarioCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#scenarioCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<div class="container">
+    <div class="row">
+        <!-- Scenario 1 Card -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Scenario 1: Criticism in Public</h5>
+                    <p class="card-text">A colleague criticizes your work in front of others. How will you respond?</p>
+                    <a href="/scenario/0" class="btn btn-primary w-100">Start Scenario</a>
+                </div>
+            </div>
+        </div>
+        <!-- Scenario 2 Card -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Scenario 2: Leading a Meeting</h5>
+                    <p class="card-text">You are asked to lead a meeting, but you feel unprepared. What will you do?</p>
+                    <a href="/scenario/1" class="btn btn-primary w-100">Start Scenario</a>
+                </div>
+            </div>
+        </div>
+        <!-- Scenario 3 Card -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Scenario 3: Gender Bias</h5>
+                    <p class="card-text">A colleague makes a derogatory remark about your gender. How will you address it?</p>
+                    <a href="/scenario/2" class="btn btn-primary w-100">Start Scenario</a>
+                </div>
+            </div>
+        </div>
+        <!-- Scenario 4 Card -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Scenario 4: Missed Deadlines</h5>
+                    <p class="card-text">Your team is consistently missing deadlines, and you're under pressure from upper management. How will you handle this?</p>
+                    <a href="/scenario/3" class="btn btn-primary w-100">Start Scenario</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 SheLeads. <a href="#">Privacy Policy</a></p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

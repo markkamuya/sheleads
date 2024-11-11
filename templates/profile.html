@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leadership Scenario</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Leadership Scenario</h2>
+        
+        <div id="scenario_description">
+            <p>Your current scenario: <strong>Harassment by a colleague</strong></p>
+            <p>You look bad.</p> <!-- Example statement that triggers user input -->
+        </div>
+
+        <!-- User Input Field -->
+        <textarea id="user_input" placeholder="How would you respond to this situation?" rows="4" cols="50"></textarea>
+
+        <!-- Submit Button -->
+        <button id="submit_response">Submit</button>
+
+        <!-- AI Response Display -->
+        <div id="bot_response" style="display:none; margin-top: 20px; padding: 10px; border: 1px solid #ddd; background-color: #f9f9f9;">
+            <h4>AI Response:</h4>
+            <p id="response_text"></p>
+        </div>
+
+    </div>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
