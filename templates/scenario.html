@@ -144,6 +144,38 @@
             font-weight: 600;
         }
 
+        /* Scorebar Styling */
+        #scorebar-container {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 30px;
+            background-color: #e0e0e0;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+
+        #scorebar {
+            height: 100%;
+            background-color: #28a745;  /* Initial green color */
+            border-radius: 20px;
+            width: 100%;
+            transition: width 1s ease, background-color 1s ease;
+        }
+
+        #score-text {
+            position: absolute;
+            font-size: 1.2rem;
+            color: white;
+            font-weight: bold;
+            z-index: 1;
+        }
+
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
             header h1 {
@@ -174,7 +206,7 @@
     </div>
 
     <!-- John's First Statement -->
-    <div id="dialogue_box">
+    <div id="dialogue_box" data-first-statement="{{ scenario['first_statement'] }}">
         <p><strong>John:</strong> <span id="current_statement">{{ scenario['first_statement'] }}</span></p>
     </div>
 
@@ -198,6 +230,12 @@
 <footer>
     <p>&copy; 2024 SheLeads | <a href="#">Privacy Policy</a></p>
 </footer>
+
+<!-- Scorebar Section -->
+<div id="scorebar-container">
+    <div id="scorebar"></div>
+    <span id="score-text">Score: 100%</span>
+</div>
 
 <script src="/static/js/script.js"></script>
 

@@ -2,11 +2,11 @@ import openai
 from flask import Flask, render_template, request, jsonify
 import time
 import os
+
 # Set the OpenAI API key
 openai.api_key = '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'
 
 # List of example scenarios
-# Updated scenario data with first statements for each scenario
 scenarios = [
     {
         "description": "A colleague criticizes your work in front of others.",
@@ -26,7 +26,6 @@ scenarios = [
     }
 ]
 
-
 # Initialize Flask app
 app = Flask(__name__)
 
@@ -41,10 +40,10 @@ sessions = {}
 @app.route('/scenario/<int:scenario_id>', methods=['GET', 'POST'])
 def scenario_page(scenario_id):
     scenario = scenarios[scenario_id]  # Get the scenario using the scenario_id
-    
+
     # Check if session exists for this user, if not create one
     session_id = str(scenario_id)  # For simplicity, let's use the scenario ID as the session ID
-    
+
     if session_id not in sessions:
         sessions[session_id] = {
             'messages': [
@@ -53,14 +52,14 @@ def scenario_page(scenario_id):
             ],
             'start_time': time.time()
         }
-    
+
     # Handle POST request (user input)
     if request.method == 'POST':
         try:
             # Get the incoming JSON data
             data = request.get_json()
             user_input = data.get('user_input', '').strip()
-            
+
             # Debugging: Log the incoming data
             print(f"Received data: {data}")
 
@@ -79,8 +78,8 @@ def scenario_page(scenario_id):
             john_response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
                 messages=[
-                    {"role": "system", "content": "You are John, a colleague in the workplace. You said the first statement in the scenario (i.e., make the first comment or response based on the scenario provided). The user has now responded to your statement. Respond to the user’s input only by mirroring their emotional tone. If the user is aggressive, respond aggressively; if they are calm, respond with neutrality or support. Do not base your responses on your own emotional tone; instead, continue reflecting the user’s tone and emotional intensity throughout the conversation. Your goal is to roleplay a realistic workplace conversation that mirrors the emotional dynamics at play. Ensure consistency in the tone of the conversation, just as it would naturally unfold in a real-world interaction."}
-                ] + sessions[session_id]['messages'],  # Corrected line
+                    {"role": "system", "content": "Time for acting! You are John, a colleague in the workplace. You make the first statement in the scenario. After the user responds, mirror their emotional tone perfectly in your reply. If the user is aggressive, respond with matching intensity; if they are calm, respond with neutrality or support. Your role is to act out the conversation with realism, reflecting the user’s emotional state accurately and consistently throughout. Be a great actor—mirror the tone exactly, just as it would unfold in a real workplace interaction. John is not a helper, he is just a workmate!!! Don't ask any questions, this is a play. So just push the conversation. Better acting skills, this is like the plays by Henrik Ibsen. You control, the conversation. Always ensure there's something to talk about to continue the conversation. You are the controller of the conversation!!! More control, trigger conversations."}
+                ] + sessions[session_id]['messages'],
                 max_tokens=300,
                 temperature=0.7
             )
@@ -90,9 +89,9 @@ def scenario_page(scenario_id):
 
             # Send the user's input to the AI for evaluation (independent of John’s response)
             evaluation_response = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",
+                model="gpt-4",
                 messages=[ 
-                    {"role": "system", "content": "Evaluate the user's professionalism and emotional intelligence (EQ) in the workplace scenario."},
+                    {"role": "system", "content": "You are an AI evaluator tasked with assessing the user's professionalism and emotional intelligence (EQ). Based on the user’s response, analyze how well they handle the workplace scenario. Focus on their emotional awareness, the appropriateness of their tone, and their ability to manage the conversation constructively. Consider the context of the workplace interaction, the user’s approach to resolving conflicts, and their ability to remain calm or assertive as needed. Provide an evaluation of their communication style, suggesting areas for improvement if necessary. Remember to use the wprd below average, average or good in your evaluation. If there's not enough context, just use available word to evaluate."},
                     {"role": "user", "content": user_input}
                 ],
                 max_tokens=300,
@@ -101,9 +100,22 @@ def scenario_page(scenario_id):
 
             # Extract AI's evaluation of the user's input
             ai_evaluation = evaluation_response['choices'][0]['message']['content'].strip()
+	    # Score adjustment logic based on AI's evaluation
+            score_change = 0  # Default score change
+            if 'excellent' in ai_evaluation.lower():
+                score_change = 10  # Increase score for excellent responses
+            elif 'good' in ai_evaluation.lower():
+                score_change = 5  # Increase score for good responses
+            elif 'average' in ai_evaluation.lower():
+                score_change = 0  # No change for average responses
+            elif 'below average' in ai_evaluation.lower():
+                score_change = -10  # Decrease score for below average responses
+            elif 'poor' in ai_evaluation.lower():
+                score_change = -20  # Decrease score for poor responses
+	    
 
             # Return the evaluation and John's statement
-            return jsonify({'bot_response': ai_evaluation, 'john_statement': john_statement})
+            return jsonify({'bot_response': ai_evaluation, 'john_statement': john_statement, 'score_change': score_change})
 
         except Exception as e:
             print(f"Error processing request: {e}")
@@ -112,7 +124,12 @@ def scenario_page(scenario_id):
     # Handle GET requests (Rendering the scenario page)
     return render_template('scenario.html', scenario=scenario, scenario_id=scenario_id)
 
+# New route for the "Scenario Over" page
+@app.route('/scenario-over')
+def scenario_over():
+    return render_template('scenario-over.html')  # Renders the scenario-over.html page
+
 # Run the app
 if __name__ == '__main__':
     # Bind to 0.0.0.0 and use the dynamic port provided by Render
-    app.run(host='0.0.0.0', port=port)
+    app.run(debug=True)

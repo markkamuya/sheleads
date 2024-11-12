@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scenario Over</title>
+    <style>
+        /* Reset all margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Body and background */
+        body {
+            background: linear-gradient(135deg, #ff7eb9, #ff65a3); /* Soft pink to deeper pink gradient */
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-size: 16px;
+            margin: 0;
+        }
+
+        /* Main container */
+        .main-container {
+            width: 100%;
+            max-width: 900px;
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            padding: 40px 50px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        /* Header */
+        header h1 {
+            font-size: 2.5em;
+            color: #ff4d94;  /* Soft pink */
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            color: #ff85c0; /* Light pink */
+        }
+
+        /* Result section */
+        .result-container {
+            margin-bottom: 30px;
+        }
+
+        .result-container h2 {
+            font-size: 2.2em;
+            color: #ff4d94;  /* Bright pink for accent */
+            margin-bottom: 15px;
+        }
+
+        .score-message {
+            font-size: 1.1em;
+            color: #777;  /* Grayish for a softer tone */
+        }
+
+        /* Score Bar */
+        .score-bar-container {
+            margin-top: 30px;
+            position: relative;
+        }
+
+        .score-bar {
+            height: 35px;
+            width: 0%;  /* Set the starting width to 0% */
+            background-color: #ff4d94; /* Bright pink */
+            border-radius: 10px;
+            transition: width 1.5s ease-in-out;
+        }
+
+        #score-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.3em;
+            color: white;
+        }
+
+        /* Feedback Section */
+        .feedback-container {
+            background-color: #ffe6f2;  /* Very light pink background */
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .feedback-container h3 {
+            font-size: 2em;
+            color: #ff4d94; /* Pink for consistency */
+            margin-bottom: 15px;
+        }
+
+        .feedback-container ul {
+            list-style: none;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        .feedback-container li {
+            color: #ff65a3; /* Lighter pink text */
+            margin-bottom: 15px;
+        }
+
+        .feedback-container li:before {
+            content: "\f00c";  /* FontAwesome checkmark */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            margin-right: 10px;
+            color: #ff4d94; /* Pink checkmark */
+        }
+
+        /* Home Button */
+        .button-container {
+            margin-top: 30px;
+        }
+
+        .home-button {
+            text-decoration: none;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            border-radius: 30px;
+            color: white;
+            background-color: #ff4d94;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .home-button:hover {
+            background-color: #ff3385;
+            transform: scale(1.05);
+        }
+
+        /* Animation for fade-in effect */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <header>
+            <h1>Scenario Over</h1>
+            <p>Your conversation has ended. Here’s your performance score and feedback.</p>
+        </header>
+
+        <div class="result-container">
+            <h2>Your Final Score</h2>
+            <div class="score-bar-container">
+                <div id="scorebar" class="score-bar"></div>
+                <div id="score-text" class="score-text">100%</div> <!-- Dynamic score text -->
+            </div>
+            <p class="score-message">This is based on how you answered the questions. Keep improving!</p>
+        </div>
+
+        <div class="feedback-container">
+            <h3>Your Feedback</h3>
+            <ul>
+                <li>Excellent work! You responded with confidence.</li>
+                <li>Great job, you’re almost there. Just a little more practice!</li>
+            </ul>
+        </div>
+
+        <div class="button-container">
+            <a href="/" class="home-button">Back to Home</a>
+        </div>
+    </div>
+
+    <script>
+        // Simulating a dynamic score (you can replace this with real data)
+        let score = 85;  // Example score; you can replace it with actual dynamic data
+
+        // Update score bar width and text
+        document.getElementById('scorebar').style.width = `${score}%`;
+        document.getElementById('score-text').textContent = `${score}%`;
+
+        // Customize feedback based on score
+        const feedback = document.querySelector('.feedback-container ul');
+
+        if (score >= 90) {
+            feedback.innerHTML = `
+                <li>Excellent! You nailed it!</li>
+                <li>Keep up the great work!</li>
+            `;
+        } else if (score >= 70) {
+            feedback.innerHTML = `
+                <li>Good job! You did well.</li>
+                <li>Keep practicing to perfect your skills!</li>
+            `;
+        } else {
+            feedback.innerHTML = `
+                <li>Nice try! With more practice, you'll improve.</li>
+                <li>Don't give up—keep going!</li>
+            `;
+        }
+    </script>
+
+</body>
+</html>
