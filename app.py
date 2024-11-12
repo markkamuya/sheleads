@@ -132,4 +132,4 @@ def scenario_over():
 # Run the app
 if __name__ == '__main__':
     # Bind to 0.0.0.0 and use the dynamic port provided by Render
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=port, debug=True)
