@@ -10,10 +10,10 @@ openai.api_key = 'sk-proj-dZRbSUulTcmPx8rytE6VpVOC8qXUOhqiCMH0FQFuAX6DD15edQsuJz
 
 # List of example scenarios
 scenarios = [
-    {"description": "A colleague criticizes your work in front of others.", "first_statement": "John: I think you missed some key points in your last report. Can we talk about that?"},
+    {"description": "A colleague criticizes your work in front of others.", "first_statement": "John: I think you missed some key points in your last report. Why did you do that?"},
     {"description": "You are asked to lead a meeting, but you feel unprepared.", "first_statement": "John: Hey, I know you were thrown into this last minute. Don't worry, I'll help guide things along."},
-    {"description": "A colleague makes a derogatory remark about your gender.", "first_statement": "John: That comment was completely inappropriate, and I think we need to address it."},
-    {"description": "Your team is consistently missing deadlines, and you're under pressure from upper management.", "first_statement": "John: We've got a serious issue with deadlines. We need to have a frank discussion about what's going on."}
+    {"description": "A colleague makes a derogatory remark about your dressing.", "first_statement": "John: Whoa, your dress today is so loud!!!."},
+    {"description": "Your team is consistently missing deadlines, and you're under pressure from upper management.", "first_statement": "John: We've got a serious issue with deadlines. We need to have a very frank discussion about what's going on."}
 ]
 
 # Initialize Flask app
