@@ -2,3 +2,4 @@ flask
 openai
 flask_sqlalchemy
 aiohttp
+Flask[async]
