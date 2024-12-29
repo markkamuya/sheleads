@@ -6,7 +6,7 @@ import asyncio
 import aiohttp
 
 # Set the OpenAI API key
-openai.api_key = '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'  # Replace 'your-api-key' with your actual API key
+openai.api_key = 'API-KEy'  # Replace 'your-api-key' with your actual API key
 
 # List of example scenarios
 scenarios = [
