@@ -56,7 +56,7 @@ To set up the project locally:
 
 3. Start the Flask development server:
    ```bash
-   flask run
+   python app.py
    ```
 
 4. Access the app at `http://127.0.0.1:5000`.
